@@ -1,14 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CuentasFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".GameFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="cuentas fragment" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@color/black"
+        >
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:layout_marginHorizontal="10dp"
+            android:text="Cuentas"
+            android:layout_gravity="center"
+            android:textStyle="bold|italic"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="10dp"
+        >
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TableLayout
+                android:id="@+id/table_deudas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <TableRow android:background="#80DEEA" android:padding="5dp">
+                    <TextView
+                        android:background="#FFFFFF"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="10dp"
+                        />
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:layout_weight="1"
+                        android:text="Jug1"
+                        android:layout_marginHorizontal="10dp"
+                        />
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:layout_weight="1"
+                        android:text="Jug1"
+                        android:layout_marginHorizontal="10dp"
+                        />
+                </TableRow>
+
+                <TableRow android:background="#F0F7F7" android:padding="5dp">
+                    <TextView
+                        android:background="#F8BBD0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="30sp"
+                        android:text="15"
+                        android:layout_marginHorizontal="10dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="30sp"
+                        android:text="35"
+                        android:layout_marginHorizontal="10dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="30sp"
+                        android:text="0"
+                        android:layout_marginHorizontal="10dp"
+                        />
+                </TableRow>
+
+                <TableRow android:background="#F0F7F7" android:padding="5dp">
+                    <TextView
+                        android:background="#F8BBD0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="30sp"
+                        android:text="15"
+                        android:layout_marginHorizontal="10dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="30sp"
+                        android:text="35"
+                        android:layout_marginHorizontal="10dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="30sp"
+                        android:text="0"
+                        android:layout_marginHorizontal="10dp"
+                        />
+                </TableRow>
+
+            </TableLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        >
+        <com.google.android.material.button.MaterialButton
+            android:backgroundTint="#BA68C8"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            app:cornerRadius="20mm"
+            android:layout_marginHorizontal="10dp"
+            android:text="Reiniciar juego"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:backgroundTint="#FFAB91"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            app:cornerRadius="20mm"
+            android:layout_marginHorizontal="10dp"
+            android:text="Cambiar jugadores"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+
+</LinearLayout>
