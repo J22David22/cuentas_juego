@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cuentas_juego.room_database.GruposDatabase
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         info.putStringArrayList("jug6s", myJug6)
 
         listRecyclerView = findViewById(R.id.recycler_grupos)
-        listRecyclerView.layoutManager=LinearLayoutManager(this)
+        listRecyclerView.layoutManager= GridLayoutManager(this,2)
         myAdapter = ListaAdapter(this as AppCompatActivity, info)
 
         listRecyclerView.setHasFixedSize(true)
