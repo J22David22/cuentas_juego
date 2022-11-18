@@ -1,10 +1,15 @@
-package com.example.cuentas_juego
+package com.example.cuentas_juego.room_database
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface GruposDAO {
-    @Query("SELECT*FROM `Group`")
+    @Query("SELECT*FROM 'Group'")
     suspend fun getAllGroups(): List<Group>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

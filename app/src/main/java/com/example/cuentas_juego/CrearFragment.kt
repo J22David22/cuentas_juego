@@ -1,5 +1,6 @@
 package com.example.cuentas_juego
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,22 +8,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.cuentas_juego.room_database.Group
+import com.example.cuentas_juego.room_database.GruposDatabase
+import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
 class CrearFragment : Fragment() {
 
-    lateinit var label_jug1_main: TextView
-    lateinit var label_jug2_main: TextView
-    lateinit var label_jug3_main: TextView
-    lateinit var label_jug4_main: TextView
-    lateinit var label_jug5_main: TextView
-    lateinit var label_jug6_main: TextView
-    lateinit var button: Button
+    lateinit var text_jug1_crear: TextInputEditText
+    lateinit var text_jug2_crear: TextInputEditText
+    lateinit var text_jug3_crear: TextInputEditText
+    lateinit var text_jug4_crear: TextInputEditText
+    lateinit var text_jug5_crear: TextInputEditText
+    lateinit var text_jug6_crear: TextInputEditText
+    lateinit var button_jugar: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
@@ -32,9 +40,90 @@ class CrearFragment : Fragment() {
         // Inflate the layout for this fragment
         val crearView =  inflater.inflate(R.layout.fragment_crear, container, false)
 
-        button=crearView.findViewById(R.id.button_jugar_grupo)
+        button_jugar=crearView.findViewById(R.id.button_jugar_grupo)
 
-        button.setOnClickListener{
+        text_jug1_crear=crearView.findViewById(R.id.text_jug1_crear)
+        text_jug2_crear=crearView.findViewById(R.id.text_jug2_crear)
+        text_jug3_crear=crearView.findViewById(R.id.text_jug3_crear)
+        text_jug4_crear=crearView.findViewById(R.id.text_jug4_crear)
+        text_jug5_crear=crearView.findViewById(R.id.text_jug5_crear)
+        text_jug6_crear=crearView.findViewById(R.id.text_jug6_crear)
+
+        var idGroup= requireArguments().getInt("id")
+        var jug1= requireArguments().getString("jug1")
+        var jug2= requireArguments().getString("jug2")
+        var jug3= requireArguments().getString("jug3")
+        var jug4= requireArguments().getString("jug4")
+        var jug5= requireArguments().getString("jug5")
+        var jug6= requireArguments().getString("jug6")
+
+        text_jug1_crear.setText(jug1)
+        text_jug2_crear.setText(jug2)
+        text_jug3_crear.setText(jug3)
+        text_jug4_crear.setText(jug4)
+        text_jug5_crear.setText(jug5)
+        text_jug6_crear.setText(jug6)
+
+        button_jugar.setOnClickListener{
+
+
+            val db= GruposDatabase.getDatabase(requireActivity())
+            var updateOrCreate: Number
+            val groupDAO=db.gruposDao()
+
+            if (requireArguments().getString("jug1").isNullOrEmpty()){
+                updateOrCreate=0
+                Toast.makeText(context, "CREAR", Toast.LENGTH_LONG).show()
+
+            }else{
+                updateOrCreate=1
+                Toast.makeText(context, "EDITAR", Toast.LENGTH_LONG).show()
+            }
+
+            runBlocking {
+                launch {
+                    if (updateOrCreate == 0) {
+                        Toast.makeText(context, "CREANDO...", Toast.LENGTH_LONG).show()
+                        val group = Group(
+                            0,
+                            text_jug1_crear.text.toString(),
+                            text_jug2_crear.text.toString(),
+                            text_jug3_crear.text.toString(),
+                            text_jug4_crear.text.toString(),
+                            text_jug5_crear.text.toString(),
+                            text_jug6_crear.text.toString()
+                        )
+                        var result = groupDAO.insertGroup(group)
+                        if (result != -1L) {
+                            (Activity.RESULT_OK)
+                            activity?.finish()
+                        }
+
+                    } else {
+                        Toast.makeText(context, "EDITANDO...", Toast.LENGTH_LONG).show()
+                        var idGroup =requireArguments().getInt("id", 0)
+
+                        val group = Group(
+                            idGroup,
+                            text_jug1_crear.text.toString(),
+                            text_jug2_crear.text.toString(),
+                            text_jug3_crear.text.toString(),
+                            text_jug4_crear.text.toString(),
+                            text_jug5_crear.text.toString(),
+                            text_jug6_crear.text.toString()
+                        )
+                        var result = groupDAO.updateGroup(group)
+
+                        var intento = Intent(context, GameActivity::class.java)
+                        startActivity(intento)
+
+                    }
+
+                }
+
+            }
+
+
             val intento =Intent(context,GameActivity::class.java)
             startActivity(intento)
         }
