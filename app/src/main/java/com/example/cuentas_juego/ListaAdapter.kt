@@ -54,7 +54,6 @@ class ListaAdapter (context: AppCompatActivity, val info: Bundle): RecyclerView.
 
 
         holder.layout.setOnClickListener{
-            Toast.makeText(holder.itemView.context,"label_jug2_main", Toast.LENGTH_LONG).show()
             val datos=Bundle()
             datos.putInt("id",myGroupIds[position])
             datos.putString("jug1",label_jug1_main!!.text as String)

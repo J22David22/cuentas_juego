@@ -73,17 +73,16 @@ class CrearFragment : Fragment() {
 
             if (requireArguments().getString("jug1").isNullOrEmpty()){
                 updateOrCreate=0
-                Toast.makeText(context, "CREAR", Toast.LENGTH_LONG).show()
 
             }else{
                 updateOrCreate=1
-                Toast.makeText(context, "EDITAR", Toast.LENGTH_LONG).show()
             }
 
             runBlocking {
                 launch {
+                    var idGroupPasa:Int
+                    var datos: Bundle = Bundle()
                     if (updateOrCreate == 0) {
-                        Toast.makeText(context, "CREANDO...", Toast.LENGTH_LONG).show()
                         val group = Group(
                             0,
                             text_jug1_crear.text.toString(),
@@ -97,10 +96,14 @@ class CrearFragment : Fragment() {
                         if (result != -1L) {
                             (Activity.RESULT_OK)
                             activity?.finish()
+                            idGroupPasa=result.toInt()
+                            datos.putInt("idGroupPasa",idGroupPasa)
+                            var intento=Intent(context,GameActivity::class.java)
+                            intento.putExtras(datos)
+                            startActivity(intento)
                         }
 
                     } else {
-                        Toast.makeText(context, "EDITANDO...", Toast.LENGTH_LONG).show()
                         var idGroup =requireArguments().getInt("id", 0)
 
                         val group = Group(
@@ -113,10 +116,18 @@ class CrearFragment : Fragment() {
                             text_jug6_crear.text.toString()
                         )
                         var result = groupDAO.updateGroup(group)
+                        idGroupPasa=idGroup
 
-                        var intento = Intent(context, GameActivity::class.java)
+                        var intento=Intent(requireActivity(),GameActivity::class.java)
+                        //datos.putInt("idGroupPasa",idGroupPasa)
+                        intento.putExtra("idGroupPasa", idGroupPasa)
+                        intento.putExtra("jugador1", text_jug1_crear.text.toString())
+                        intento.putExtra("jugador2", text_jug2_crear.text.toString())
+                        intento.putExtra("jugador3", text_jug3_crear.text.toString())
+                        intento.putExtra("jugador4", text_jug4_crear.text.toString())
+                        intento.putExtra("jugador5", text_jug5_crear.text.toString())
+                        intento.putExtra("jugador6", text_jug6_crear.text.toString())
                         startActivity(intento)
-
                     }
 
                 }
@@ -124,8 +135,8 @@ class CrearFragment : Fragment() {
             }
 
 
-            val intento =Intent(context,GameActivity::class.java)
-            startActivity(intento)
+            //val intento =Intent(context,GameActivity::class.java)
+            //startActivity(intento)
         }
         return crearView
     }
