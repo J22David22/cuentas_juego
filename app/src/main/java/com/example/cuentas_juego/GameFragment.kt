@@ -54,7 +54,6 @@ class GameFragment : Fragment() {
     }
 
     private fun func(service: String) {
-        Toast.makeText(context,"service"+service,Toast.LENGTH_SHORT).show()
         var a = 0
         for(i in 0..service.toInt()){
 
@@ -68,9 +67,6 @@ class GameFragment : Fragment() {
         var jugador4= arguments?.getString("jugador4")
         var jugador5= arguments?.getString("jugador5")
         var jugador6= arguments?.getString("jugador6")
-        Toast.makeText(context,"pla: "+jugador1+jugador2,Toast.LENGTH_SHORT).show()
-        Toast.makeText(context,"pla: "+jugador3+jugador4,Toast.LENGTH_SHORT).show()
-        Toast.makeText(context,"pla: "+jugador5+jugador6,Toast.LENGTH_SHORT).show()
 
         var table_juego:TableLayout?=null
 
@@ -169,6 +165,7 @@ class GameFragment : Fragment() {
 
             boton_agregar.setOnClickListener{
                 agregar_datos()
+
             }
         }
 
@@ -179,9 +176,144 @@ class GameFragment : Fragment() {
     private fun agregar_datos() {
         val alertDialog=AlertDialog.Builder(requireActivity())
         val view=layoutInflater.inflate(R.layout.ingresar_puntos,null)
+
+        var tablePuntos:TableLayout?=null
+
+        tablePuntos=view?.findViewById(R.id.tablePuntos)
+        tablePuntos?.removeAllViews()
+
+
+
+
+
+        val tableRow1=TableRow(context)
+        val textView1=TextView(context)
+        val editView1=EditText(context)
+
+
+
+        textView1.textSize= 30F
+        editView1.textSize= 30F
+
+        var jugador1= arguments?.getString("jugador1")
+        var jugador2= arguments?.getString("jugador2")
+        var jugador3= arguments?.getString("jugador3")
+        var jugador4= arguments?.getString("jugador4")
+        var jugador5= arguments?.getString("jugador5")
+        var jugador6= arguments?.getString("jugador6")
+
+
+
+
+        if(!jugador1.isNullOrBlank()){
+            if (jugador1.length>=3){
+                val tableRow0=TableRow(context)
+                val editView0=EditText(context)
+                val textView0=TextView(context)
+                editView0.textSize= 30F
+                textView0.textSize= 30F
+                textView0.text=" "+ jugador1.toString().uppercase().substring(0,3)+" "
+                tableRow0.addView(textView0)
+                tableRow0.addView(editView0)
+                tablePuntos?.addView(tableRow0)
+            }
+            else{
+            }
+        }
+        if(!jugador2.isNullOrBlank()){
+            if (jugador2.length>=3){
+                val tableRow1=TableRow(context)
+                val editView1=EditText(context)
+                val textView1=TextView(context)
+                editView1.textSize= 30F
+                textView1.textSize= 30F
+                textView1.text=" "+ jugador2.toString().uppercase().substring(0,3)+" "
+                tableRow1.addView(textView1)
+                tableRow1.addView(editView1)
+                tablePuntos?.addView(tableRow1)
+            }
+            else{
+            }
+        }
+        if(!jugador3.isNullOrBlank()){
+            if (jugador3.length>=3){
+                val tableRow2=TableRow(context)
+                val editView2=EditText(context)
+                val textView2=TextView(context)
+                editView2.textSize= 30F
+                textView2.textSize= 30F
+                textView2.text=" "+ jugador3.toString().uppercase().substring(0,3)+" "
+                tableRow2.addView(textView2)
+                tableRow2.addView(editView2)
+                tablePuntos?.addView(tableRow2)
+            }
+            else{
+            }
+        }
+        if(!jugador4.isNullOrBlank()){
+            if (jugador4.length>3){
+                val tableRow3=TableRow(context)
+                val editView3=EditText(context)
+                val textView3=TextView(context)
+                editView3.textSize= 30F
+                textView3.textSize= 30F
+                textView3.text=" "+ jugador4.toString().uppercase().substring(0,3)+" "
+                tableRow3.addView(textView3)
+                tableRow3.addView(editView3)
+                tablePuntos?.addView(tableRow3)
+            }
+            else{
+            }
+        }
+        if(!jugador5.isNullOrBlank()){
+            if (jugador5.length>3){
+                val tableRow4=TableRow(context)
+                val editView4=EditText(context)
+                val textView4=TextView(context)
+                editView4.textSize= 30F
+                textView4.textSize= 30F
+                textView4.text=" "+ jugador5.toString().uppercase().substring(0,3)+" "
+                tableRow4.addView(textView4)
+                tableRow4.addView(editView4)
+                tablePuntos?.addView(tableRow4)
+            }
+            else{
+            }
+        }
+        if(!jugador6.isNullOrBlank()){
+            if (jugador6.length>3){
+                val tableRow5=TableRow(context)
+                val editView5=EditText(context)
+                val textView5=TextView(context)
+                editView5.textSize= 30F
+                textView5.textSize= 30F
+                textView5.text=" "+ jugador6.toString().uppercase().substring(0,3)+" "
+                tableRow5.addView(textView5)
+                tableRow5.addView(editView5)
+                tablePuntos?.addView(tableRow5)
+            }
+            else{
+            }
+        }
+
+
+
+        tablePuntos?.addView(tableRow1)
+
         alertDialog.setView(view)
         val dialog=alertDialog.create()
         dialog.show()
+
+
+        val botonGuardarPuntos=view.findViewById<Button>(R.id.boton_aceptar)
+        botonGuardarPuntos.setOnClickListener{
+            Toast.makeText(context, "Prueba aceptar", Toast.LENGTH_SHORT).show()
+        }
+
+        val botonCancelarPuntos=view.findViewById<Button>(R.id.boton_cancelar)
+        botonCancelarPuntos.setOnClickListener{
+            Toast.makeText(context, "Prueba cancelar", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setup_table() {
