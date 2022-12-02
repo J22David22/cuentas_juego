@@ -29,6 +29,10 @@ class GameFragment : Fragment() {
 
 
     var table_juego:TableLayout?=null
+    var table_turno:TableLayout?=null
+
+
+
     var numJuego:Int=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,6 +82,11 @@ class GameFragment : Fragment() {
         table_juego=view?.findViewById(R.id.table_cuentas)
         table_juego?.removeAllViews()
 
+        table_turno=view?.findViewById(R.id.table_turno)
+        table_turno?.removeAllViews()
+
+
+
 
         val tableRow0=TableRow(context)
         val textView0=TextView(context)
@@ -87,12 +96,12 @@ class GameFragment : Fragment() {
         val textView4=TextView(context)
         val textView5=TextView(context)
 
-        textView0.textSize= 30F
-        textView1.textSize= 30F
-        textView2.textSize= 30F
-        textView3.textSize= 30F
-        textView4.textSize= 30F
-        textView5.textSize= 30F
+        textView0.textSize= 25F
+        textView1.textSize= 25F
+        textView2.textSize= 25F
+        textView3.textSize= 25F
+        textView4.textSize= 25F
+        textView5.textSize= 25F
 
 
         if(!jugador1.isNullOrBlank()){
@@ -152,6 +161,15 @@ class GameFragment : Fragment() {
         tableRow0.addView(textView5)
 
         table_juego?.addView(tableRow0)
+
+        val textViewJuego1=TextView(context)
+        val tableRow1Juego1=TableRow(context)
+        textViewJuego1.textSize=25F
+        textViewJuego1.text=""
+        tableRow1Juego1.addView(textViewJuego1)
+        table_turno?.addView(tableRow1Juego1)
+
+
     }
 
 
@@ -175,6 +193,7 @@ class GameFragment : Fragment() {
         }
 
         //setup_table()
+
 
     }
 
@@ -204,8 +223,8 @@ class GameFragment : Fragment() {
 
 
 
-        textView1.textSize= 30F
-        editView1.textSize= 30F
+        textView1.textSize= 25F
+        editView1.textSize= 25F
 
         var jugador1= arguments?.getString("jugador1")
         var jugador2= arguments?.getString("jugador2")
@@ -221,105 +240,104 @@ class GameFragment : Fragment() {
             val tableRow0=TableRow(context)
 
             val textView0=TextView(context)
-            editView0.textSize= 30F
-            textView0.textSize= 30F
+            editView0.textSize= 25F
+            editView0.hint="          "
+            textView0.textSize= 25F
 
             tableRow0.addView(textView0)
             tableRow0.addView(editView0)
             tablePuntos?.addView(tableRow0)
             if (jugador1.length>=3){
-                textView0.text=" "+ jugador1.toString().uppercase().substring(0,3)+" "
+                textView0.text="    "+ jugador1.toString().uppercase().substring(0,3)+"    "
             }
             else{
-                textView0.text=" "+ jugador1.toString().uppercase()+" "
+                textView0.text="     "+ jugador1.toString().uppercase()+"    "
             }
         }
         if(!jugador2.isNullOrBlank()){
             val tableRow1=TableRow(context)
 
             val textView1=TextView(context)
-            editView1.textSize= 30F
-            textView1.textSize= 30F
+            editView1.textSize= 25F
+            textView1.textSize= 25F
 
             tableRow1.addView(textView1)
             tableRow1.addView(editView1)
             tablePuntos?.addView(tableRow1)
             if (jugador2.length>=3){
-                textView1.text=" "+ jugador2.toString().uppercase().substring(0,3)+" "
+                textView1.text="    "+ jugador2.toString().uppercase().substring(0,3)+"    "
             }
             else{
-                textView1.text=" "+ jugador2.toString().uppercase()+" "
+                textView1.text="    "+ jugador2.toString().uppercase()+"    "
             }
         }
         if(!jugador3.isNullOrBlank()){
             val tableRow2=TableRow(context)
 
             val textView2=TextView(context)
-            editView2.textSize= 30F
-            textView2.textSize= 30F
+            editView2.textSize= 25F
+            textView2.textSize= 25F
 
             tableRow2.addView(textView2)
             tableRow2.addView(editView2)
             tablePuntos?.addView(tableRow2)
             if (jugador3.length>=3){
-                textView2.text=" "+ jugador3.toString().uppercase().substring(0,3)+" "
+                textView2.text="    "+ jugador3.toString().uppercase().substring(0,3)+"    "
             }
             else{
-                textView2.text=" "+ jugador3.toString().uppercase()+" "
+                textView2.text="    "+ jugador3.toString().uppercase()+"    "
             }
         }
         if(!jugador4.isNullOrBlank()){
             val tableRow3=TableRow(context)
 
             val textView3=TextView(context)
-            editView3.textSize= 30F
-            textView3.textSize= 30F
+            editView3.textSize= 25F
+            textView3.textSize= 25F
 
             tableRow3.addView(textView3)
             tableRow3.addView(editView3)
             tablePuntos?.addView(tableRow3)
             if (jugador4.length>3){
-                textView3.text=" "+ jugador4.toString().uppercase().substring(0,3)+" "
+                textView3.text="    "+ jugador4.toString().uppercase().substring(0,3)+"    "
             }
             else{
-                textView3.text=" "+ jugador4.toString().uppercase()+" "
+                textView3.text="    "+ jugador4.toString().uppercase()+"    "
             }
         }
         if(!jugador5.isNullOrBlank()){
             val tableRow4=TableRow(context)
             val textView4=TextView(context)
-            editView4.textSize= 30F
-            textView4.textSize= 30F
+            editView4.textSize= 25F
+            textView4.textSize= 25F
 
             tableRow4.addView(textView4)
             tableRow4.addView(editView4)
             tablePuntos?.addView(tableRow4)
             if (jugador5.length>3){
-                textView4.text=" "+ jugador5.toString().uppercase().substring(0,3)+" "
+                textView4.text="    "+ jugador5.toString().uppercase().substring(0,3)+"    "
             }
             else{
-                textView4.text=" "+ jugador5.toString().uppercase()+" "
+                textView4.text="    "+ jugador5.toString().uppercase()+"    "
             }
         }
         if(!jugador6.isNullOrBlank()){
             val tableRow5=TableRow(context)
 
             val textView5=TextView(context)
-            editView5.textSize= 30F
-            textView5.textSize= 30F
+            editView5.textSize= 25F
+            textView5.textSize= 25F
 
             tableRow5.addView(textView5)
             tableRow5.addView(editView5)
             tablePuntos?.addView(tableRow5)
             if (jugador6.length>3){
-                textView5.text=" "+ jugador6.toString().uppercase().substring(0,3)+" "
+                textView5.text="    "+ jugador6.toString().uppercase().substring(0,3)+"    "
             }
             else{
-                textView5.text=" "+ jugador6.toString().uppercase()+" "
+                textView5.text="    "+ jugador6.toString().uppercase()+"    "
             }
         }
-
-
 
         tablePuntos?.addView(tableRow1)
 
@@ -328,15 +346,19 @@ class GameFragment : Fragment() {
         dialog.show()
 
 
+
+
+
         val botonGuardarPuntos=view.findViewById<Button>(R.id.boton_aceptar)
         botonGuardarPuntos.setOnClickListener{
+
 
             Toast.makeText(context, "Prueba aceptar", Toast.LENGTH_SHORT).show()
             if(!jugador1.isNullOrBlank()){
                 val punt_juga1=editView0.text.toString()
                 val textjuga1juego1=TextView(context)
-                textjuga1juego1.textSize=30F
-                textjuga1juego1.text=punt_juga1
+                textjuga1juego1.textSize=25F
+                textjuga1juego1.text="  "+punt_juga1
 
                 tablejuegoRow1.addView(textjuga1juego1)
                 table_juego?.addView(tablejuegoRow1)
@@ -347,8 +369,8 @@ class GameFragment : Fragment() {
             if(!jugador2.isNullOrBlank()){
                 val punt_juga2=editView1.text.toString()
                 val textjuga2juego1=TextView(context)
-                textjuga2juego1.textSize=30F
-                textjuga2juego1.text=punt_juga2
+                textjuga2juego1.textSize=25F
+                textjuga2juego1.text="  "+punt_juga2
 
                 tablejuegoRow1.addView(textjuga2juego1)
 
@@ -358,8 +380,8 @@ class GameFragment : Fragment() {
             if(!jugador3.isNullOrBlank()){
                 val punt_juga3=editView2.text.toString()
                 val textjuga3juego1=TextView(context)
-                textjuga3juego1.textSize=30F
-                textjuga3juego1.text=punt_juga3
+                textjuga3juego1.textSize=25F
+                textjuga3juego1.text="  "+punt_juga3
 
                 tablejuegoRow1.addView(textjuga3juego1)
 
@@ -369,8 +391,8 @@ class GameFragment : Fragment() {
             if(!jugador4.isNullOrBlank()){
                 val punt_juga4=editView3.text.toString()
                 val textjuga4juego1=TextView(context)
-                textjuga4juego1.textSize=30F
-                textjuga4juego1.text=punt_juga4
+                textjuga4juego1.textSize=25F
+                textjuga4juego1.text="  "+punt_juga4
 
                 tablejuegoRow1.addView(textjuga4juego1)
 
@@ -380,8 +402,8 @@ class GameFragment : Fragment() {
             if(!jugador5.isNullOrBlank()){
                 val punt_juga5=editView4.text.toString()
                 val textjuga5juego1=TextView(context)
-                textjuga5juego1.textSize=30F
-                textjuga5juego1.text=punt_juga5
+                textjuga5juego1.textSize=25F
+                textjuga5juego1.text="  "+punt_juga5
 
                 tablejuegoRow1.addView(textjuga5juego1)
 
@@ -391,16 +413,21 @@ class GameFragment : Fragment() {
             if(!jugador6.isNullOrBlank()){
                 val punt_juga6=editView5.text.toString()
                 val textjuga6juego1=TextView(context)
-                textjuga6juego1.textSize=30F
-                textjuga6juego1.text=punt_juga6
+                textjuga6juego1.textSize=25F
+                textjuga6juego1.text="  "+punt_juga6
 
                 tablejuegoRow1.addView(textjuga6juego1)
 
                 dialog.dismiss()
             }
-
-
             numJuego=numJuego+1
+            val textViewJuego1=TextView(context)
+            val tableRow1Juego1=TableRow(context)
+            textViewJuego1.textSize=25F
+            textViewJuego1.text="J"+numJuego.toString()
+            tableRow1Juego1.addView(textViewJuego1)
+            table_turno?.addView(tableRow1Juego1)
+
         }
 
         val botonCancelarPuntos=view.findViewById<Button>(R.id.boton_cancelar)
