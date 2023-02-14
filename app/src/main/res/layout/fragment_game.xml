@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:id="@+id/fragment_game"
-    tools:context=".GameFragment">
+    tools:context=".GameActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,13 +67,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="vertical"
+            android:layout_weight="3"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="10dp"
+            android:orientation="horizontal"
             >
-            <TextView
+            <TableLayout
+                android:id="@+id/table_calculo_juego"
+                android:layout_width="80dp"
+                android:layout_height="match_parent">
+
+            </TableLayout>
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Textico"/>
+                android:layout_height="match_parent"
+                >
+
+                <TableLayout
+                    android:id="@+id/table_puntajes_provisionales"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                </TableLayout>
+            </HorizontalScrollView>
         </LinearLayout>
 
     </LinearLayout>

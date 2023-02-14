@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.ButtonBarLayout
 import androidx.navigation.fragment.NavHostFragment
+import com.example.cue.GameFragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.navigation.NavigationView
 
